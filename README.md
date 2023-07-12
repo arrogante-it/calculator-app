@@ -15,10 +15,10 @@ Program main functional:
 `/api/v1/calculator/add?number1=6&number2=3`
 
 - subtract:
-`/api/v1/calculator/add?number1=6&number2=3`
+`/api/v1/calculator/subtract?number1=6&number2=3`
 
 - multiply:
-`/api/v1/calculator/add?number1=6&number2=3`
+`/api/v1/calculator/multiply?number1=6&number2=3`
 
 - divide:
-`/api/v1/calculator/add?number1=6&number2=3`
+`/api/v1/calculator/divide?number1=6&number2=3`
