@@ -1,7 +1,5 @@
-package com.arroganteIT.restAPI.calculatorAPI.service;
+package com.calculator.app.api.service;
 
-import com.calculator.app.api.service.CalculatorService;
-import com.calculator.app.api.service.CalculatorServiceImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
