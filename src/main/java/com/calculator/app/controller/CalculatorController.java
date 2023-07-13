@@ -1,7 +1,7 @@
-package com.calculator.app.api.presentation.controller;
+package com.calculator.app.controller;
 
-import com.calculator.app.api.presentation.model.CalculatorResultDto;
-import com.calculator.app.api.service.CalculatorService;
+import com.calculator.app.model.CalculatorResultDto;
+import com.calculator.app.service.CalculatorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;

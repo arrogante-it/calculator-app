@@ -1,13 +1,13 @@
-package com.calculator.app.api;
+package com.calculator.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ArroganteRestApplication {
+public class CalculatorApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ArroganteRestApplication.class, args);
+		SpringApplication.run(CalculatorApplication.class, args);
 	}
 
 }

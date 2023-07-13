@@ -1,4 +1,4 @@
-package com.calculator.app.api.service;
+package com.calculator.app.service;
 
 public interface CalculatorService {
 
