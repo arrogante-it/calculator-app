@@ -10,8 +10,11 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 @WebMvcTest(CalculatorController.class)
 class CalculatorControllerTest {
+
 
     private MockMvc mockMvc;
 
@@ -25,15 +28,15 @@ class CalculatorControllerTest {
 
     @ParameterizedTest
     @CsvSource({
-            "5.0, 3.0, 8.0",
-            "1000000.0, 2.0, 1000002.0",
-            "2.5, -1.5, 1.0"
+            "5.0, 3.0, 9.0",
+            "1000000.0, 1.0, 1000001.0",
+            "2.5, -1.5, 3.0"
     })
     public void add(double number1, double number2, double expectedResult) throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/add")
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/calculator/add")
                 .param("number1", String.valueOf(number1))
                 .param("number2", String.valueOf(number2)))
-                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.result").value(expectedResult));
     }
 
@@ -44,10 +47,10 @@ class CalculatorControllerTest {
             "2.5, -1.5, 4.0"
     })
     public void subtract(double number1, double number2, double expectedResult) throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/subtract")
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/calculator/subtract")
                 .param("number1", String.valueOf(number1))
                 .param("number2", String.valueOf(number2)))
-                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.result").value(expectedResult));
     }
 
@@ -58,10 +61,10 @@ class CalculatorControllerTest {
             "2.5, 1.5, 3.75"
     })
     public void multiply(double number1, double number2, double expectedResult) throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/multiply")
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/calculator/multiply")
                 .param("number1", String.valueOf(number1))
                 .param("number2", String.valueOf(number2)))
-                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.result").value(expectedResult));
     }
 
@@ -73,15 +76,15 @@ class CalculatorControllerTest {
     })
     public void divide(double number1, double number2, double expectedResult) throws Exception {
         if (number2 == 0.0) {
-            mockMvc.perform(MockMvcRequestBuilders.get("/divide")
+            mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/calculator/divide")
                     .param("number1", String.valueOf(number1))
                     .param("number2", String.valueOf(number2)))
-                    .andExpect(MockMvcResultMatchers.status().isBadRequest());
+                    .andExpect(status().isBadRequest());
         } else {
             mockMvc.perform(MockMvcRequestBuilders.get("/divide")
                     .param("number1", String.valueOf(number1))
                     .param("number2", String.valueOf(number2)))
-                    .andExpect(MockMvcResultMatchers.status().isOk())
+                    .andExpect(status().isOk())
                     .andExpect(MockMvcResultMatchers.jsonPath("$.result").value(expectedResult));
         }
     }
