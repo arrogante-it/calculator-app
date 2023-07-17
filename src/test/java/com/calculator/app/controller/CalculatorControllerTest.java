@@ -19,6 +19,8 @@ class CalculatorControllerTest {
     @MockBean
     private CalculatorService calculatorService;
 
+    private static final String API_PATH = "/api/v1/calculator";
+
     @Test
     public void add() throws Exception {
         double number1 = 2.5;
@@ -27,7 +29,7 @@ class CalculatorControllerTest {
 
         Mockito.when(calculatorService.add(number1, number2)).thenReturn(expectedResult);
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/calculator/add")
+        mockMvc.perform(MockMvcRequestBuilders.get(API_PATH + "/add")
                 .param("number1", String.valueOf(number1))
                 .param("number2", String.valueOf(number2)))
                 .andExpect(MockMvcResultMatchers.status().isOk())
@@ -42,7 +44,7 @@ class CalculatorControllerTest {
 
         Mockito.when(calculatorService.subtract(number1, number2)).thenReturn(expectedResult);
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/calculator/subtract")
+        mockMvc.perform(MockMvcRequestBuilders.get(API_PATH + "/subtract")
                 .param("number1", String.valueOf(number1))
                 .param("number2", String.valueOf(number2)))
                 .andExpect(MockMvcResultMatchers.status().isOk())
@@ -57,7 +59,7 @@ class CalculatorControllerTest {
 
         Mockito.when(calculatorService.multiply(number1, number2)).thenReturn(expectedResult);
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/calculator/multiply")
+        mockMvc.perform(MockMvcRequestBuilders.get(API_PATH + "/multiply")
                 .param("number1", String.valueOf(number1))
                 .param("number2", String.valueOf(number2)))
                 .andExpect(MockMvcResultMatchers.status().isOk())
@@ -72,7 +74,7 @@ class CalculatorControllerTest {
 
         Mockito.when(calculatorService.divide(number1, number2)).thenReturn(expectedResult);
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/calculator/divide")
+        mockMvc.perform(MockMvcRequestBuilders.get(API_PATH + "/divide")
                 .param("number1", String.valueOf(number1))
                 .param("number2", String.valueOf(number2)))
                 .andExpect(MockMvcResultMatchers.status().isOk())
