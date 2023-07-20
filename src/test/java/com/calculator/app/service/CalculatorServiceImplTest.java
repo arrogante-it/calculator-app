@@ -1,9 +1,11 @@
 package com.calculator.app.service;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CalculatorServiceImplTest {
 
@@ -18,7 +20,7 @@ public class CalculatorServiceImplTest {
     public void add(double number1, double number2, double expected) {
         double result = calculatorService.add(number1, number2);
         double delta = Math.ulp(result);
-        Assertions.assertEquals(expected, result, delta);
+        assertEquals(expected, result, delta);
     }
 
     @ParameterizedTest
@@ -30,7 +32,7 @@ public class CalculatorServiceImplTest {
     public void subtract(double number1, double number2, double expected) {
         double result = calculatorService.subtract(number1, number2);
         double delta = Math.ulp(result);
-        Assertions.assertEquals(expected, result, delta);
+        assertEquals(expected, result, delta);
     }
 
     @ParameterizedTest
@@ -42,7 +44,7 @@ public class CalculatorServiceImplTest {
     public void multiply(double number1, double number2, double expected) {
         double result = calculatorService.multiply(number1, number2);
         double delta = Math.ulp(result);
-        Assertions.assertEquals(expected, result, delta);
+        assertEquals(expected, result, delta);
     }
 
     @ParameterizedTest
@@ -54,7 +56,7 @@ public class CalculatorServiceImplTest {
     public void divide(double number1, double number2, double expected) {
         double result = calculatorService.divide(number1, number2);
         double delta = Math.ulp(result);
-        Assertions.assertEquals(expected, result, delta);
+        assertEquals(expected, result, delta);
     }
 
     @Test
@@ -64,11 +66,11 @@ public class CalculatorServiceImplTest {
 
         String expectedErrorMessage = "cannot divide by zero";
 
-        IllegalArgumentException exception = Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            calculatorService.divide(number1, number2);
-        });
+        IllegalArgumentException exception =
+                assertThrows(IllegalArgumentException.class, () ->
+                        calculatorService.divide(number1, number2));
 
         String actualErrorMessage = exception.getMessage();
-        Assertions.assertEquals(expectedErrorMessage, actualErrorMessage);
+        assertEquals(expectedErrorMessage, actualErrorMessage);
     }
 }
